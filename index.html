@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced cryptocurrency dashboard for portfolio tracking, price alerts, and market analysis">
+    <meta name="keywords" content="cryptocurrency, bitcoin, ethereum, portfolio, trading, crypto dashboard">
+    <meta name="author" content="CryptoVision Pro">
+    <meta name="theme-color" content="#6c5ce7">
+    <title>CryptoVision Pro | Advanced Crypto Dashboard</title>
+    <link rel="manifest" href="attached_assets/manifest_1754103886350.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="mobile-enhanced.css" rel="stylesheet" type="text/css" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body data-theme="light">
+    
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    
+    <!-- Connection Status -->
+    <div class="connection-status connected" id="connectionStatus">
+        <i class="fas fa-wifi"></i> Connected
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+    <div class="app-container" data-theme="light">
+        <!-- App Header -->
+        <header class="app-header">
+            <div class="header-row-1">
+                <div class="header-left">
+                    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="logo">
+                        <i class="fas fa-chart-line"></i>
+                        <h1>CryptoVision Pro</h1>
+                    </div>
+                    <div class="theme-toggle">
+                        <button id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="header-center">
+                    <div class="search-container">
+                        <input type="text" id="headerSearchInput" placeholder="Search coins..." class="header-search">
+                        <button id="headerSearchBtn" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button id="upgradeBtn" class="upgrade-btn">
+                        <i class="fas fa-crown"></i> Upgrade to Pro
+                    </button>
+                </div>
+            </div>
+            
+        </header>
+
+        <!-- Main App Content -->
+        <div class="app-content">
+            <!-- Sidebar Navigation -->
+            <nav class="sidebar">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search coins...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li class="active" data-section="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li data-section="markets">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Markets</span>
+                    </li>
+                    <li data-section="portfolio">
+                        <i class="fas fa-wallet"></i>
+                        <span>Portfolio</span>
+                    </li>
+                    <li data-section="watchlist">
+                        <i class="fas fa-star"></i>
+                        <span>Watchlist</span>
+                    </li>
+                    <li data-section="alerts">
+                        <i class="fas fa-bell"></i>
+                        <span>Alerts</span>
+                    </li>
+                    <li data-section="news">
+                        <i class="fas fa-newspaper"></i>
+                        <span>News</span>
+                    </li>
+                    <li data-section="trading">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Trading</span>
+                    </li>
+                    <li class="pro-feature" data-section="screener">
+                        <i class="fas fa-filter"></i>
+                        <span>Screener</span>
+                        <span class="pro-badge">PRO</span>
+                    </li>
+                    <li class="pro-feature" data-section="tax">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Tax Reports</span>
+                        <span class="pro-badge">PRO</span>
+                    </li>
+                    <li data-section="analytics">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Analytics</span>
+                    </li>
+                    <li data-section="defi">
+                        <i class="fas fa-coins"></i>
+                        <span>DeFi</span>
+                    </li>
+                    <li data-section="nft">
+                        <i class="fas fa-image"></i>
+                        <span>NFTs</span>
+                    </li>
+                </ul>
+
+                <div class="nav-section-divider">
+                    <span>Advanced Tools</span>
+                </div>
+
+                <ul class="nav-menu advanced-nav">
+                    <li class="pro-feature" data-section="ai-signals">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Signals</span>
+                        <span class="pro-badge">PRO</span>
+                    </li>
+                    <li class="pro-feature" data-section="market-scanner">
+                        <i class="fas fa-radar-alt"></i>
+                        <span>Market Scanner</span>
+                        <span class="pro-badge">PRO</span>
+                    </li>
+                    <li class="pro-feature" data-section="portfolio-analyzer">
+                        <i class="fas fa-chart-network"></i>
+                        <span>Portfolio Analyzer</span>
+                        <span class="pro-badge">PRO</span>
+                    </li>
+                    <li class="pro-feature" data-section="risk-management">
+                        <i class="fas fa-shield-virus"></i>
+                        <span>Risk Management</span>
+                        <span class="pro-badge">PRO</span>
+                    </li>
+                    <li class="pro-feature" data-section="arbitrage-finder">
+                        <i class="fas fa-exchange"></i>
+                        <span>Arbitrage Finder</span>
+                        <span class="pro-badge">PRO</span>
+                    </li>
+                    <li class="pro-feature" data-section="social-analytics">
+                        <i class="fas fa-users-cog"></i>
+                        <span>Social Analytics</span>
+                        <span class="pro-badge">PRO</span>
+                    </li>
+                    <li class="pro-feature" data-section="whale-tracker">
+                        <i class="fas fa-fish"></i>
+                        <span>Whale Tracker</span>
+                        <span class="pro-badge">PRO</span>
+                    </li>
+                    <li class="pro-feature" data-section="derivatives">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Derivatives</span>
+                        <span class="pro-badge">PRO</span>
+                    </li>
+                </ul>
+
+                <div class="user-section">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <div class="user-info">
+                        <strong id="userName">Guest User</strong>
+                        <small id="userPlan">Free Plan</small>
+                    </div>
+                    <button id="loginBtn" class="action-btn" title="Login">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Dashboard Section -->
+                <section class="content-section active" id="dashboard">
+                    <div class="section-header">
+                        <h2>Market Overview</h2>
+                        <div class="dashboard-controls" style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+                            <div class="timeframe-selector">
+                                <button class="timeframe-btn active" data-timeframe="24h">24h</button>
+                                <button class="timeframe-btn" data-timeframe="7d">7d</button>
+                                <button class="timeframe-btn" data-timeframe="30d">30d</button>
+                            </div>
+                            <button id="aiAnalysisBtn" class="primary-btn" style="margin-right: 1rem;">
+                                <i class="fas fa-robot"></i> AI Market Analysis
+                            </button>
+                            <button id="portfolioOptimizerBtn" class="primary-btn secondary" style="margin-right: 1rem;">
+                                <i class="fas fa-brain"></i> Smart Optimizer
+                            </button>
+                            <button id="refreshDataBtn" class="action-btn" title="Refresh Data">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Global Market Stats -->
+                    <div class="global-market-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                        <div class="stat-card card">
+                            <div class="card-body" style="text-align: center; padding: 1rem;">
+                                <span style="display: block; font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Market Cap</span>
+                                <strong id="globalMarketCap" style="font-size: 1.25rem; color: var(--text-primary);">$1.23T</strong>
+                            </div>
+                        </div>
+                        <div class="stat-card card">
+                            <div class="card-body" style="text-align: center; padding: 1rem;">
+                                <span style="display: block; font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem;">24h Volume</span>
+                                <strong id="globalVolume" style="font-size: 1.25rem; color: var(--text-primary);">$45.67B</strong>
+                            </div>
+                        </div>
+                        <div class="stat-card card">
+                            <div class="card-body" style="text-align: center; padding: 1rem;">
+                                <span style="display: block; font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem;">BTC Dominance</span>
+                                <strong id="btcDominance" style="font-size: 1.25rem; color: var(--text-primary);">48.5%</strong>
+                            </div>
+                        </div>
+                        <div class="stat-card card">
+                            <div class="card-body" style="text-align: center; padding: 1rem;">
+                                <span style="display: block; font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Fear & Greed</span>
+                                <strong id="fearGreedValue" style="font-size: 1.25rem; color: var(--positive-color);">72</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <!-- Market Overview Cards -->
+                        <div class="card market-overview">
+                            <div class="card-header">
+                                <h3>Market Overview</h3>
+                                <div class="market-status">
+                                    <span class="status-indicator positive"></span>
+                                    <span>Markets Open</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="overview-stats">
+                                    <div class="stat">
+                                        <span>Fear & Greed Index</span>
+                                        <strong id="fearGreedValue">72</strong>
+                                        <small id="fearGreedLabel">Greed</small>
+                                    </div>
+                                    <div class="stat">
+                                        <span>Active Coins</span>
+                                        <strong id="activeCoins">2.1K</strong>
+                                        <small>+12 (24h)</small>
+                                    </div>
+                                    <div class="stat">
+                                        <span>Market Cap Change</span>
+                                        <strong id="marketCapChange" class="positive">+2.45%</strong>
+                                        <small>24h</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Market Dominance Chart -->
+                        <div class="card dominance-card">
+                            <div class="card-header">
+                                <h3>Market Dominance</h3>
+                                <div class="chart-controls">
+                                    <button class="chart-control-btn active" data-chart="dominance">Dominance</button>
+                                    <button class="chart-control-btn" data-chart="volume">Volume</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="dominanceChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Top Gainers -->
+                        <div class="card gainers-card">
+                            <div class="card-header">
+                                <h3>Top Gainers (24h)</h3>
+                                <button class="view-all-btn" onclick="switchSection('markets')">View All</button>
+                            </div>
+                            <div class="card-body" id="topGainers">
+                                <!-- Filled by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Top Losers -->
+                        <div class="card losers-card">
+                            <div class="card-header">
+                                <h3>Top Losers (24h)</h3>
+                                <button class="view-all-btn" onclick="switchSection('markets')">View All</button>
+                            </div>
+                            <div class="card-body" id="topLosers">
+                                <!-- Filled by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Trending Coins -->
+                        <div class="card trending-card">
+                            <div class="card-header">
+                                <h3>Trending Coins</h3>
+                                <div class="trending-indicator">
+                                    <i class="fas fa-fire"></i>
+                                    <span>Hot</span>
+                                </div>
+                            </div>
+                            <div class="card-body" id="trendingCoins">
+                                <!-- Filled by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Summary -->
+                        <div class="card portfolio-summary-card">
+                            <div class="card-header">
+                                <h3>Portfolio Summary</h3>
+                                <button class="view-all-btn" onclick="switchSection('portfolio')">Manage</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="portfolio-quick-stats">
+                                    <div class="quick-stat">
+                                        <span>Total Value</span>
+                                        <strong id="dashboardPortfolioValue">$0.00</strong>
+                                    </div>
+                                    <div class="quick-stat">
+                                        <span>24h Change</span>
+                                        <strong id="dashboardPortfolioChange" class="neutral">$0.00 (0.00%)</strong>
+                                    </div>
+                                    <div class="quick-stat">
+                                        <span>Assets</span>
+                                        <strong id="dashboardAssetCount">0</strong>
+                                    </div>
+                                </div>
+                                <canvas id="portfolioMiniChart" style="height: 100px;"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- AI-Powered Market Intelligence -->
+                        <div class="card ai-intelligence-card">
+                            <div class="card-header">
+                                <h3>🧠 AI Market Intelligence</h3>
+                                <div class="ai-status">
+                                    <span class="status-indicator ai-active"></span>
+                                    <span>AI Active</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="ai-metrics">
+                                    <div class="ai-metric">
+                                        <span>Market Sentiment</span>
+                                        <strong id="aiSentiment">78% Bullish</strong>
+                                        <div class="sentiment-bar">
+                                            <div class="sentiment-fill" style="width: 78%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="ai-metric">
+                                        <span>Volatility Score</span>
+                                        <strong id="volatilityScore">6.2/10</strong>
+                                        <small class="warning">Medium Risk</small>
+                                    </div>
+                                </div>
+                                <div class="ai-predictions">
+                                    <h4>🎯 AI Predictions (24h)</h4>
+                                    <div class="prediction-list">
+                                        <div class="prediction-item">
+                                            <span class="coin-symbol">BTC</span>
+                                            <span class="prediction">+3.2%</span>
+                                            <span class="confidence">92%</span>
+                                        </div>
+                                        <div class="prediction-item">
+                                            <span class="coin-symbol">ETH</span>
+                                            <span class="prediction">+1.8%</span>
+                                            <span class="confidence">87%</span>
+                                        </div>
+                                        <div class="prediction-item">
+                                            <span class="coin-symbol">ADA</span>
+                                            <span class="prediction">-0.5%</span>
+                                            <span class="confidence">74%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="primary-btn" onclick="openAdvancedAI()">
+                                    <i class="fas fa-robot"></i> Full AI Analysis
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Smart Portfolio Optimizer -->
+                        <div class="card optimizer-card">
+                            <div class="card-header">
+                                <h3>⚡ Smart Portfolio Optimizer</h3>
+                                <div class="optimization-status">
+                                    <span class="status-indicator positive"></span>
+                                    <span>Optimized</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="optimization-score">
+                                    <div class="score-display">
+                                        <span>Portfolio Score</span>
+                                        <strong id="portfolioScore">8.4/10</strong>
+                                        <small class="positive">Excellent</small>
+                                    </div>
+                                    <div class="risk-return">
+                                        <span>Risk/Return Ratio</span>
+                                        <strong id="riskReturn">1.42</strong>
+                                        <small class="positive">Optimal</small>
+                                    </div>
+                                </div>
+                                <div class="optimization-suggestions">
+                                    <h4>💡 Smart Suggestions</h4>
+                                    <div class="suggestion-list">
+                                        <div class="suggestion-item priority-high">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                            <span>Reduce BTC allocation by 5%</span>
+                                            <button class="apply-btn">Apply</button>
+                                        </div>
+                                        <div class="suggestion-item priority-medium">
+                                            <i class="fas fa-info-circle"></i>
+                                            <span>Add SOL for diversification</span>
+                                            <button class="apply-btn">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="primary-btn" onclick="openPortfolioOptimizer()">
+                                    <i class="fas fa-cogs"></i> Advanced Optimizer
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Real-time Arbitrage Opportunities -->
+                        <div class="card arbitrage-card">
+                            <div class="card-header">
+                                <h3>💎 Arbitrage Opportunities</h3>
+                                <div class="arbitrage-status">
+                                    <span class="status-indicator positive"></span>
+                                    <span>4 Active</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="arbitrage-stats">
+                                    <div class="arb-stat">
+                                        <span>Best Opportunity</span>
+                                        <strong class="positive">+2.8%</strong>
+                                        <small>BTC Binance→Coinbase</small>
+                                    </div>
+                                    <div class="arb-stat">
+                                        <span>Potential Profit</span>
+                                        <strong>$1,247</strong>
+                                        <small>Based on $50K capital</small>
+                                    </div>
+                                </div>
+                                <div class="arbitrage-opportunities">
+                                    <h4>⚡ Live Opportunities</h4>
+                                    <div class="opportunity-list">
+                                        <div class="opportunity-item">
+                                            <span class="pair">BTC/USDT</span>
+                                            <span class="exchanges">Binance → Coinbase</span>
+                                            <span class="profit positive">+2.8%</span>
+                                        </div>
+                                        <div class="opportunity-item">
+                                            <span class="pair">ETH/USDT</span>
+                                            <span class="exchanges">Kraken → KuCoin</span>
+                                            <span class="profit positive">+1.9%</span>
+                                        </div>
+                                        <div class="opportunity-item">
+                                            <span class="pair">ADA/USDT</span>
+                                            <span class="exchanges">Huobi → Gate.io</span>
+                                            <span class="profit positive">+1.2%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="primary-btn" onclick="openArbitrageCalculator()">
+                                    <i class="fas fa-calculator"></i> Arbitrage Calculator
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Technical Analysis -->
+                        <div class="card technical-analysis-card">
+                            <div class="card-header">
+                                <h3>📊 Advanced Technical Analysis</h3>
+                                <div class="analysis-timeframe">
+                                    <select id="analysisTimeframe">
+                                        <option value="1h">1 Hour</option>
+                                        <option value="4h" selected>4 Hours</option>
+                                        <option value="1d">1 Day</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="technical-overview">
+                                    <div class="tech-indicator">
+                                        <span>RSI (14)</span>
+                                        <strong class="warning">68.5</strong>
+                                        <small>Overbought Zone</small>
+                                    </div>
+                                    <div class="tech-indicator">
+                                        <span>MACD</span>
+                                        <strong class="positive">Bullish Cross</strong>
+                                        <small>Strong Buy Signal</small>
+                                    </div>
+                                </div>
+                                <div class="pattern-recognition">
+                                    <h4>🔍 Pattern Recognition</h4>
+                                    <div class="pattern-list">
+                                        <div class="pattern-item bullish">
+                                            <span class="pattern-name">Bull Flag</span>
+                                            <span class="pattern-coin">BTC</span>
+                                            <span class="pattern-confidence">94%</span>
+                                        </div>
+                                        <div class="pattern-item bearish">
+                                            <span class="pattern-name">Head & Shoulders</span>
+                                            <span class="pattern-coin">ETH</span>
+                                            <span class="pattern-confidence">81%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="primary-btn" onclick="openTechnicalAnalysis()">
+                                    <i class="fas fa-chart-area"></i> Full Analysis
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Live Market Signals -->
+                        <div class="card market-signals-card">
+                            <div class="card-header">
+                                <h3>🔴 Live Market Signals</h3>
+                                <div class="signal-strength">
+                                    <span class="strength-indicator strong"></span>
+                                    <span>Strong</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="signal-list" id="marketSignals">
+                                    <div class="signal-item bullish">
+                                        <div class="signal-info">
+                                            <span class="signal-pair">BTC/USDT</span>
+                                            <span class="signal-type">Golden Cross</span>
+                                        </div>
+                                        <div class="signal-action">
+                                            <span class="signal-direction">BUY</span>
+                                            <span class="signal-confidence">92%</span>
+                                        </div>
+                                    </div>
+                                    <div class="signal-item bearish">
+                                        <div class="signal-info">
+                                            <span class="signal-pair">ETH/USDT</span>
+                                            <span class="signal-type">RSI Overbought</span>
+                                        </div>
+                                        <div class="signal-action">
+                                            <span class="signal-direction">SELL</span>
+                                            <span class="signal-confidence">78%</span>
+                                        </div>
+                                    </div>
+                                    <div class="signal-item bullish">
+                                        <div class="signal-info">
+                                            <span class="signal-pair">ADA/USDT</span>
+                                            <span class="signal-type">Volume Spike</span>
+                                        </div>
+                                        <div class="signal-action">
+                                            <span class="signal-direction">BUY</span>
+                                            <span class="signal-confidence">85%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="view-all-btn" onclick="openModal('signalsModal')">View All Signals</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Markets Section -->
+                <section class="content-section" id="markets">
+                    <div class="section-header">
+                        <h2>Cryptocurrency Markets</h2>
+                        <div class="market-filters">
+                            <select id="marketSort">
+                                <option value="market_cap">Market Cap</option>
+                                <option value="volume">Volume</option>
+                                <option value="price">Price</option>
+                                <option value="change">24h Change</option>
+                            </select>
+                            <select id="marketOrder">
+                                <option value="desc">Descending</option>
+                                <option value="asc">Ascending</option>
+                            </select>
+                            <button id="marketFiltersBtn" class="filter-btn">
+                                <i class="fas fa-filter"></i> Filters
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="markets-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Coin</th>
+                                    <th>Price</th>
+                                    <th>24h</th>
+                                    <th>7d</th>
+                                    <th>Market Cap</th>
+                                    <th>Volume (24h)</th>
+                                    <th>Last 7 Days</th>
+                                </tr>
+                            </thead>
+                            <tbody id="marketsTableBody">
+                                <!-- Filled by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <button id="prevPage"><i class="fas fa-chevron-left"></i></button>
+                        <span id="currentPage">1 / 10</span>
+                        <button id="nextPage"><i class="fas fa-chevron-right"></i></button>
+                        <select id="itemsPerPage">
+                            <option value="25">25 per page</option>
+                            <option value="50" selected>50 per page</option>
+                            <option value="100">100 per page</option>
+                        </select>
+                    </div>
+                </section>
+
+                <!-- Portfolio Section -->
+                <section class="content-section" id="portfolio">
+                    <div class="section-header">
+                        <h2>My Portfolio</h2>
+                        <div>
+                            <button id="addCoinBtn" class="primary-btn">
+                                <i class="fas fa-plus"></i> Add Transaction
+                            </button>
+                            <button id="syncExchangeBtn" class="primary-btn secondary" style="margin-left: 10px;">
+                                <i class="fas fa-sync-alt"></i> Sync Exchange
+                            </button>
+                            <button id="viewTransactionsBtn" class="primary-btn secondary" style="margin-left: 10px;">
+                                <i class="fas fa-history"></i> History
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-summary">
+                        <div class="summary-card total-value">
+                            <h3>Total Value</h3>
+                            <strong id="portfolioTotal">$0.00</strong>
+                            <span id="portfolioChange">0.00% (24h)</span>
+                        </div>
+                        <div class="summary-card distribution">
+                            <h3>Asset Distribution</h3>
+                            <canvas id="distributionChart"></canvas>
+                        </div>
+                        <div class="summary-card performance">
+                            <h3>Performance</h3>
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Coin</th>
+                                    <th>Holdings</th>
+                                    <th>Avg. Buy</th>
+                                    <th>Current</th>
+                                    <th>Profit/Loss</th>
+                                    <th>Allocation</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="portfolioTableBody">
+                                <!-- Filled by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Watchlist Section -->
+                <section class="content-section" id="watchlist">
+                    <div class="section-header">
+                        <h2>My Watchlist</h2>
+                        <div class="watchlist-controls">
+                            <button id="addToWatchlistBtn" class="primary-btn">
+                                <i class="fas fa-plus"></i> Add Coin
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="watchlist-grid" id="watchlistGrid">
+                        <!-- Filled by JS -->
+                    </div>
+                </section>
+
+                <!-- Alerts Section -->
+                <section class="content-section" id="alerts">
+                    <div class="section-header">
+                        <h2>Price Alerts</h2>
+                        <div class="alerts-controls">
+                            <button id="addAlertBtn" class="primary-btn">
+                                <i class="fas fa-plus"></i> New Alert
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="alerts-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Coin</th>
+                                    <th>Condition</th>
+                                    <th>Target Price</th>
+                                    <th>Current Price</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alertsTableBody">
+                                <!-- Filled by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- News Section -->
+                <section class="content-section" id="news">
+                    <div class="section-header">
+                        <h2>Latest Crypto News</h2>
+                        <div class="news-filters">
+                            <select id="newsCategory">
+                                <option value="all">All News</option>
+                                <option value="bitcoin">Bitcoin</option>
+                                <option value="ethereum">Ethereum</option>
+                                <option value="regulation">Regulation</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="news-grid" id="newsGrid">
+                        <!-- Filled by JS -->
+                    </div>
+                </section>
+
+                <!-- Trading Section -->
+                <section class="content-section" id="trading">
+                    <div class="section-header">
+                        <h2>Advanced Trading Terminal</h2>
+                        <div class="trading-controls">
+                            <select id="tradingPair">
+                                <option value="BTCUSDT">BTC/USDT</option>
+                                <option value="ETHUSDT">ETH/USDT</option>
+                                <option value="ADAUSDT">ADA/USDT</option>
+                            </select>
+                            <button id="fullscreenChart" class="action-btn">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="trading-layout">
+                        <div class="chart-section">
+                            <div class="chart-header">
+                                <div class="price-info">
+                                    <span class="current-price" id="tradingPrice">$45,234.67</span>
+                                    <span class="price-change positive" id="tradingChange">+2.34%</span>
+                                </div>
+                                <div class="chart-controls">
+                                    <div class="timeframe-buttons">
+                                        <button class="tf-btn" data-tf="1m">1m</button>
+                                        <button class="tf-btn" data-tf="5m">5m</button>
+                                        <button class="tf-btn active" data-tf="1h">1h</button>
+                                        <button class="tf-btn" data-tf="4h">4h</button>
+                                        <button class="tf-btn" data-tf="1d">1D</button>
+                                    </div>
+                                    <div class="indicator-controls">
+                                        <button class="indicator-btn" data-indicator="ma">MA</button>
+                                        <button class="indicator-btn" data-indicator="rsi">RSI</button>
+                                        <button class="indicator-btn" data-indicator="macd">MACD</button>
+                                        <button class="indicator-btn" data-indicator="bb">BB</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="trading-chart">
+                                <canvas id="tradingChartCanvas" style="width: 100%; height: 400px;"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="trading-sidebar">
+                            <div class="order-book">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>Order Book</h3>
+                                        <div class="spread-info">
+                                            Spread: <span class="spread-value">$0.02</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="orderbook-container">
+                                            <div class="asks">
+                                                <div class="orderbook-header">
+                                                    <span>Price (USDT)</span>
+                                                    <span>Amount (BTC)</span>
+                                                    <span>Total</span>
+                                                </div>
+                                                <div id="askOrders" class="orders-list">
+                                                    <!-- Filled by JS -->
+                                                </div>
+                                            </div>
+                                            <div class="current-price-ob">
+                                                <span id="obCurrentPrice">$45,234.67</span>
+                                            </div>
+                                            <div class="bids">
+                                                <div id="bidOrders" class="orders-list">
+                                                    <!-- Filled by JS -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="trading-form">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="trade-tabs">
+                                            <button class="trade-tab active" data-tab="spot">Spot</button>
+                                            <button class="trade-tab" data-tab="margin">Margin</button>
+                                            <button class="trade-tab" data-tab="futures">Futures</button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="order-type-selector">
+                                            <button class="order-type-btn active" data-type="market">Market</button>
+                                            <button class="order-type-btn" data-type="limit">Limit</button>
+                                            <button class="order-type-btn" data-type="stop">Stop</button>
+                                        </div>
+
+                                        <div class="trade-form">
+                                            <div class="form-group">
+                                                <label>Price (USDT)</label>
+                                                <input type="number" id="tradePrice" placeholder="45,234.67" step="0.01">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Amount (BTC)</label>
+                                                <input type="number" id="tradeAmount" placeholder="0.001" step="0.00000001">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Total (USDT)</label>
+                                                <input type="number" id="tradeTotal" placeholder="45.23" readonly>
+                                            </div>
+
+                                            <div class="percentage-buttons">
+                                                <button class="pct-btn" data-pct="25">25%</button>
+                                                <button class="pct-btn" data-pct="50">50%</button>
+                                                <button class="pct-btn" data-pct="75">75%</button>
+                                                <button class="pct-btn" data-pct="100">100%</button>
+                                            </div>
+
+                                            <div class="trade-buttons">
+                                                <button class="trade-btn buy-btn">
+                                                    <i class="fas fa-arrow-up"></i> Buy BTC
+                                                </button>
+                                                <button class="trade-btn sell-btn">
+                                                    <i class="fas fa-arrow-down"></i> Sell BTC
+                                                </button>
+                                            </div>
+
+                                            <div class="balance-info">
+                                                <div class="balance-item">
+                                                    <span>Available USDT:</span>
+                                                    <strong>$12,345.67</strong>
+                                                </div>
+                                                <div class="balance-item">
+                                                    <span>Available BTC:</span>
+                                                    <strong>0.5432 BTC</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="recent-trades">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>Recent Trades</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="trades-header">
+                                            <span>Price</span>
+                                            <span>Amount</span>
+                                            <span>Time</span>
+                                        </div>
+                                        <div id="recentTradesList" class="trades-list">
+                                            <!-- Filled by JS -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="open-orders">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Open Orders</h3>
+                                <button id="cancelAllOrders" class="action-btn">
+                                    <i class="fas fa-times"></i> Cancel All
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <table class="orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Pair</th>
+                                            <th>Type</th>
+                                            <th>Side</th>
+                                            <th>Amount</th>
+                                            <th>Price</th>
+                                            <th>Filled</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="openOrdersBody">
+                                        <!-- Filled by JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Screener Section -->
+                <section class="content-section" id="screener">
+                    <div class="section-header">
+                        <h2>Advanced Crypto Screener</h2>
+                        <div class="screener-controls">
+                            <button id="resetFiltersBtn" class="primary-btn secondary">
+                                <i class="fas fa-undo"></i> Reset Filters
+                            </button>
+                            <button id="saveFiltersBtn" class="primary-btn secondary">
+                                <i class="fas fa-save"></i> Save Filters
+                            </button>
+                            <button id="exportResultsBtn" class="primary-btn">
+                                <i class="fas fa-download"></i> Export Results
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="screener-layout">
+                        <div class="screener-filters-panel">
+                            <div class="filter-section">
+                                <h3>Market Data Filters</h3>
+                                <div class="filter-group">
+                                    <label>Market Cap Range</label>
+                                    <div class="range-inputs">
+                                        <input type="number" id="marketCapMin" placeholder="Min ($)">
+                                        <input type="number" id="marketCapMax" placeholder="Max ($)">
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Price Range</label>
+                                    <div class="range-inputs">
+                                        <input type="number" id="priceMin" placeholder="Min ($)" step="0.00001">
+                                        <input type="number" id="priceMax" placeholder="Max ($)" step="0.00001">
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <label>24h Change (%)</label>
+                                    <div class="range-inputs">
+                                        <input type="number" id="change24hMin" placeholder="Min %" step="0.1">
+                                        <input type="number" id="change24hMax" placeholder="Max %" step="0.1">
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <label>7d Change (%)</label>
+                                    <div class="range-inputs">
+                                        <input type="number" id="change7dMin" placeholder="Min %" step="0.1">
+                                        <input type="number" id="change7dMax" placeholder="Max %" step="0.1">
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Volume (24h)</label>
+                                    <div class="range-inputs">
+                                        <input type="number" id="volumeMin" placeholder="Min ($)">
+                                        <input type="number" id="volumeMax" placeholder="Max ($)">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="filter-section">
+                                <h3>Technical Indicators</h3>
+                                <div class="filter-group">
+                                    <label>RSI (14)</label>
+                                    <div class="range-inputs">
+                                        <input type="number" id="rsiMin" placeholder="Min" min="0" max="100">
+                                        <input type="number" id="rsiMax" placeholder="Max" min="0" max="100">
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Moving Average Signal</label>
+                                    <select id="maSignal">
+                                        <option value="">All</option>
+                                        <option value="bullish">Bullish Cross</option>
+                                        <option value="bearish">Bearish Cross</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="filter-actions">
+                                <button id="applyFiltersBtn" class="primary-btn full-width">
+                                    <i class="fas fa-search"></i> Apply Filters
+                                </button>
+                                <button id="clearFiltersBtn" class="action-btn full-width">
+                                    <i class="fas fa-times"></i> Clear All
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="screener-results-panel">
+                            <div class="results-header">
+                                <h3>Screening Results <span id="resultsCount">(0 coins)</span></h3>
+                                <div class="results-controls">
+                                    <select id="resultsSort">
+                                        <option value="market_cap">Market Cap</option>
+                                        <option value="price">Price</option>
+                                        <option value="change_24h">24h Change</option>
+                                        <option value="volume">Volume</option>
+                                    </select>
+                                    <button id="sortOrderBtn" class="action-btn">
+                                        <i class="fas fa-sort-amount-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="screener-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Coin</th>
+                                            <th>Price</th>
+                                            <th>24h %</th>
+                                            <th>7d %</th>
+                                            <th>Market Cap</th>
+                                            <th>Volume</th>
+                                            <th>RSI</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="screenerResults">
+                                        <tr>
+                                            <td colspan="8" style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                                                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                                                Apply filters to see screening results
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tax Reports Section -->
+                <section class="content-section" id="tax">
+                    <div class="section-header">
+                        <h2>Tax Reports</h2>
+                        <small class="pro-badge">PRO FEATURE</small>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="pro-feature-preview">
+                                <i class="fas fa-file-invoice-dollar pro-icon"></i>
+                                <h3>Comprehensive Tax Reporting</h3>
+                                <p>Generate detailed tax reports for your crypto transactions with support for multiple tax jurisdictions and accounting methods.</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> Capital Gains/Losses Reports</li>
+                                    <li><i class="fas fa-check"></i> DeFi Transaction Tracking</li>
+                                    <li><i class="fas fa-check"></i> Multiple Accounting Methods</li>
+                                    <li><i class="fas fa-check"></i> Tax Form Generation</li>
+                                </ul>
+                                <button id="upgradeTaxBtn" class="primary-btn">
+                                    <i class="fas fa-crown"></i> Upgrade Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Analytics Section -->
+                <section class="content-section" id="analytics">
+                    <div class="section-header">
+                        <h2>Advanced Analytics</h2>
+                        <div class="analytics-controls">
+                            <button id="aiInsightsBtn" class="primary-btn">
+                                <i class="fas fa-robot"></i> AI Insights
+                            </button>
+                            <button id="riskAnalysisBtn" class="primary-btn secondary">
+                                <i class="fas fa-shield-alt"></i> Risk Analysis
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="analytics-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Fear & Greed Index</h3>
+                                <div class="chart-timeframe">
+                                    <button class="timeframe-mini active" data-period="1d">1D</button>
+                                    <button class="timeframe-mini" data-period="7d">7D</button>
+                                    <button class="timeframe-mini" data-period="30d">30D</button>
+                                </div>
+                            </div>
+                            <div class="card-body" id="fearGreedIndex">
+                                <div class="fear-greed-gauge">
+                                    <canvas id="fearGreedGauge" width="200" height="100"></canvas>
+                                    <div class="gauge-value">
+                                        <span id="gaugeValue">72</span>
+                                        <small id="gaugeLabel">Greed</small>
+                                    </div>
+                                </div>
+                                <div class="fear-greed-history">
+                                    <canvas id="fearGreedChart" height="100"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Social Sentiment Analysis</h3>
+                                <div class="sentiment-score positive">
+                                    <i class="fas fa-arrow-up"></i> 78% Bullish
+                                </div>
+                            </div>
+                            <div class="card-body" id="socialSentiment">
+                                <div class="sentiment-sources">
+                                    <div class="sentiment-item">
+                                        <div class="source-info">
+                                            <i class="fab fa-twitter"></i>
+                                            <span>Twitter</span>
+                                        </div>
+                                        <div class="sentiment-meter">
+                                            <div class="meter-bar">
+                                                <div class="meter-fill positive" style="width: 82%"></div>
+                                            </div>
+                                            <span>82% Positive</span>
+                                        </div>
+                                    </div>
+                                    <div class="sentiment-item">
+                                        <div class="source-info">
+                                            <i class="fab fa-reddit"></i>
+                                            <span>Reddit</span>
+                                        </div>
+                                        <div class="sentiment-meter">
+                                            <div class="meter-bar">
+                                                <div class="meter-fill positive" style="width: 75%"></div>
+                                            </div>
+                                            <span>75% Positive</span>
+                                        </div>
+                                    </div>
+                                    <div class="sentiment-item">
+                                        <div class="source-info">
+                                            <i class="fas fa-newspaper"></i>
+                                            <span>News</span>
+                                        </div>
+                                        <div class="sentiment-meter">
+                                            <div class="meter-bar">
+                                                <div class="meter-fill neutral" style="width: 67%"></div>
+                                            </div>
+                                            <span>67% Neutral</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="trending-topics">
+                                    <h4>Trending Topics</h4>
+                                    <div class="topic-tags">
+                                        <span class="topic-tag hot">#BitcoinETF</span>
+                                        <span class="topic-tag">#Ethereum2.0</span>
+                                        <span class="topic-tag">#DeFiSummer</span>
+                                        <span class="topic-tag hot">#AICoins</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>AI-Powered Insights</h3>
+                                <div class="ai-status">
+                                    <i class="fas fa-brain"></i>
+                                    <span>AI Active</span>
+                                </div>
+                            </div>
+                            <div class="card-body" id="aiInsights">
+                                <div class="insight-item">
+                                    <div class="insight-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="insight-content">
+                                        <h4>Market Prediction</h4>
+                                        <p>AI models suggest a 73% probability of Bitcoin reaching $52,000 within 30 days based on current trends.</p>
+                                        <span class="confidence-score">Confidence: 87%</span>
+                                    </div>
+                                </div>
+                                <div class="insight-item">
+                                    <div class="insight-icon">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                    <div class="insight-content">
+                                        <h4>Portfolio Optimization</h4>
+                                        <p>Consider rebalancing: Reduce BTC allocation by 5% and increase ETH to optimize risk-adjusted returns.</p>
+                                        <span class="confidence-score">Confidence: 92%</span>
+                                    </div>
+                                </div>
+                                <div class="insight-item">
+                                    <div class="insight-icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="insight-content">
+                                        <h4>Risk Alert</h4>
+                                        <p>High correlation detected between your top 3 holdings. Consider diversification across different sectors.</p>
+                                        <span class="confidence-score">Confidence: 95%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Advanced Risk Metrics</h3>
+                            </div>
+                            <div class="card-body" id="riskMetrics">
+                                <div class="risk-grid">
+                                    <div class="risk-item">
+                                        <span class="risk-label">VaR (95%)</span>
+                                        <span class="risk-value negative">-$2,847</span>
+                                    </div>
+                                    <div class="risk-item">
+                                        <span class="risk-label">Sharpe Ratio</span>
+                                        <span class="risk-value positive">1.42</span>
+                                    </div>
+                                    <div class="risk-item">
+                                        <span class="risk-label">Max Drawdown</span>
+                                        <span class="risk-value negative">-18.3%</span>
+                                    </div>
+                                    <div class="risk-item">
+                                        <span class="risk-label">Beta</span>
+                                        <span class="risk-value">0.87</span>
+                                    </div>
+                                </div>
+                                <canvas id="riskChart" height="150"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Market Heat Map</h3>
+                                <div class="heatmap-controls">
+                                    <select id="heatmapMetric">
+                                        <option value="price_change">Price Change</option>
+                                        <option value="volume">Volume</option>
+                                        <option value="market_cap">Market Cap</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="marketHeatmap" class="heatmap-container">
+                                    <!-- Filled by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Correlation Matrix</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="correlationMatrix" class="correlation-container">
+                                    <!-- Filled by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- DeFi Section -->
+                <section class="content-section" id="defi">
+                    <div class="section-header">
+                        <h2>DeFi Opportunities <span class="live-indicator">LIVE</span></h2>
+                        <div class="defi-controls">
+                            <select id="defiCategory">
+                                <option value="all">All Protocols</option>
+                                <option value="lending">Lending</option>
+                                <option value="dex">DEX</option>
+                                <option value="yield">Yield Farming</option>
+                                <option value="staking">Staking</option>
+                            </select>
+                            <button class="primary-btn" onclick="refreshDeFiData()">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="defi-overview">
+                        <div class="card card-live">
+                            <div class="card-body">
+                                <h3>Total Value Locked (TVL)</h3>
+                                <strong id="totalTvl">$125.4B</strong>
+                                <span class="positive" id="tvlChange">+2.4% (24h)</span>
+                                <canvas id="tvlChart" style="height: 40px; margin-top: 0.5rem;"></canvas>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Average APY</h3>
+                                <strong id="avgApy">8.2%</strong>
+                                <span class="negative" id="apyChange">-0.3% (24h)</span>
+                                <div class="performance-badge good">Good</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Active Protocols</h3>
+                                <strong id="activeProtocols">1,247</strong>
+                                <span class="positive" id="protocolsChange">+12 (24h)</span>
+                                <small>Across 15 chains</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Your DeFi Portfolio</h3>
+                                <strong id="defiPortfolioValue">$0.00</strong>
+                                <span class="neutral" id="defiPortfolioChange">No positions</span>
+                                <button class="primary-btn secondary" onclick="connectDeFiWallet()" style="margin-top: 0.5rem;">
+                                    <i class="fas fa-wallet"></i> Connect
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="defi-pools" id="defiPools">
+                        <!-- Filled by JS -->
+                    </div>
+
+                    <div class="defi-strategies">
+                        <div class="card card-premium">
+                            <div class="card-header">
+                                <h3>🚀 Recommended Strategies</h3>
+                                <div class="strategy-rating">
+                                    <span class="performance-badge excellent">High APY</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="strategy-list">
+                                    <div class="strategy-item">
+                                        <div class="strategy-info">
+                                            <h4>Stablecoin Yield Farming</h4>
+                                            <p>Low risk, steady returns with USDC/USDT pools</p>
+                                            <div class="strategy-metrics">
+                                                <span>APY: <strong class="positive">12.5%</strong></span>
+                                                <span>Risk: <strong class="positive">Low</strong></span>
+                                                <span>Liquidity: <strong>$450M</strong></span>
+                                            </div>
+                                        </div>
+                                        <button class="primary-btn" onclick="exploreStrategy('stablecoin')">
+                                            <i class="fas fa-rocket"></i> Explore
+                                        </button>
+                                    </div>
+                                    <div class="strategy-item">
+                                        <div class="strategy-info">
+                                            <h4>ETH 2.0 Staking</h4>
+                                            <p>Earn rewards by staking Ethereum 2.0</p>
+                                            <div class="strategy-metrics">
+                                                <span>APY: <strong class="positive">5.2%</strong></span>
+                                                <span>Risk: <strong class="warning">Medium</strong></span>
+                                                <span>Min Stake: <strong>0.1 ETH</strong></span>
+                                            </div>
+                                        </div>
+                                        <button class="primary-btn" onclick="exploreStrategy('eth-staking')">
+                                            <i class="fas fa-coins"></i> Stake
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NFT Section -->
+                <section class="content-section" id="nft">
+                    <div class="section-header">
+                        <h2>NFT Marketplace</h2>
+                    </div>
+
+                    <div class="nft-stats">
+                        <div class="stat-card">
+                            <h4>Total Volume</h4>
+                            <strong>145.7K ETH</strong>
+                            <small class="positive">+12.4% (24h)</small>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Floor Price</h4>
+                            <strong>2.1 ETH</strong>
+                            <small class="negative">-5.2% (24h)</small>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Owners</h4>
+                            <strong>8.9K</strong>
+                            <small class="positive">+156 (24h)</small>
+                        </div>
+                    </div>
+
+                    <div class="nft-grid" id="nftGrid">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="pro-feature-preview">
+                                    <i class="fas fa-image pro-icon"></i>
+                                    <h3>NFT Portfolio Tracking</h3>
+                                    <p>Track your NFT collections, floor prices, and market trends with our advanced NFT analytics.</p>
+                                    <button class="primary-btn" onclick="openModal('upgradeModal')">
+                                        <i class="fas fa-crown"></i> Upgrade Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add Coin Modal -->
+    <div class="modal" id="addCoinModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Transaction</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="transactionType">Transaction Type</label>
+                    <select id="transactionType">
+                        <option value="buy">Buy</option>
+                        <option value="sell">Sell</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="coinSelect">Select Coin</label>
+                    <select id="coinSelect">
+                        <!-- Filled by JS -->
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="coinAmount">Amount</label>
+                        <input type="number" id="coinAmount" placeholder="0.00" step="0.00000001" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="buyPrice">Price (USD)</label>
+                        <input type="number" id="buyPrice" placeholder="0.00" step="0.00000001" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="transactionDate">Date</label>
+                    <input type="datetime-local" id="transactionDate">
+                </div>
+                <button id="confirmAddCoin" class="primary-btn">Add Transaction</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Modal -->
+    <div class="modal" id="alertModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Set Price Alert</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Coin</label>
+                    <select id="alertCoinSelect">
+                        <!-- Filled by JS -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Condition</label>
+                    <select id="alertCondition">
+                        <option value="above">Price Above</option>
+                        <option value="below">Price Below</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Price (USD)</label>
+                    <input type="number" id="alertPriceValue" step="0.00000001" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Repeat</label>
+                    <select id="alertRepeat">
+                        <option value="once">Alert Once</option>
+                        <option value="repeat">Repeat Alert</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Notification Type</label>
+                    <select id="alertNotificationType">
+                        <option value="app">In-App Notification</option>
+                        <option value="email">Email</option>
+                        <option value="both">Both</option>
+                    </select>
+                </div>
+                <button id="saveAlert" class="primary-btn">Save Alert</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exchange Connection Modal -->
+    <div class="modal" id="connectExchangeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Connect Exchange</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Select Exchange</label>
+                    <select id="exchangeSelect">
+                        <option value="binance">Binance</option>
+                        <option value="coinbase">Coinbase Pro</option>
+                        <option value="kraken">Kraken</option>
+                        <option value="kucoin">KuCoin</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>API Key</label>
+                    <input type="text" id="apiKey" placeholder="Enter your API key">
+                    <small>API key must have read-only permissions</small>
+                </div>
+                <div class="form-group">
+                    <label>API Secret</label>
+                    <input type="password" id="apiSecret" placeholder="Enter your API secret">
+                </div>
+                <div class="form-group">
+                    <label>API Passphrase (if required)</label>
+                    <input type="password" id="apiPassphrase" placeholder="Enter your API passphrase">
+                </div>
+                <button id="connectExchange" class="primary-btn">Connect Exchange</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coin Detail Modal -->
+    <div class="modal" id="coinDetailModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="coinDetailTitle">Bitcoin (BTC)</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="coin-header">
+                    <div class="coin-info">
+                        <img id="detailCoinImage" src="" alt="">
+                        <div>
+                            <h2 id="detailCoinName">Bitcoin</h2>
+                            <span id="detailCoinSymbol">BTC</span>
+                        </div>
+                    </div>
+                    <div class="coin-price">
+                        <strong id="detailCoinPrice">$0.00</strong>
+                        <span id="detailCoinChange">0.00%</span>
+                    </div>
+                </div>
+
+                <div class="coin-stats">
+                    <div class="stat-card">
+                        <span>Market Cap</span>
+                        <strong id="detailMarketCap">$0.00</strong>
+                    </div>
+                    <div class="stat-card">
+                        <span>24h Volume</span>
+                        <strong id="detailVolume">$0.00</strong>
+                    </div>
+                    <div class="stat-card">
+                        <span>Circulating Supply</span>
+                        <strong id="detailSupply">0.00 BTC</strong>
+                    </div>
+                    <div class="stat-card">
+                        <span>All-Time High</span>
+                        <strong id="detailAth">$0.00</strong>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="height: 400px;">
+                    <div id="detailChart" style="height: 350px;">
+                        <canvas id="detailChartCanvas" style="width: 100%; height: 100%;"></canvas>
+                    </div>
+                </div>
+
+                <div class="coin-actions">
+                    <button class="primary-btn" id="addToWatchlistBtn">
+                        <i class="far fa-star"></i> Add to Watchlist
+                    </button>
+                    <button class="primary-btn" id="setAlertBtn">
+                        <i class="fas fa-bell"></i> Set Price Alert
+                    </button>
+                    <button class="primary-btn secondary" id="addToPortfolioBtn">
+                        <i class="fas fa-wallet"></i> Add to Portfolio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="authModalTitle">Login to CryptoVision Pro</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="authEmail">Email</label>
+                    <input type="email" id="authEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="authPassword">Password</label>
+                    <input type="password" id="authPassword" placeholder="••••••••" required>
+                </div>
+                <div id="authNameGroup" class="form-group" style="display: none;">
+                    <label for="authName">Full Name</label>
+                    <input type="text" id="authName" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe">
+                        Remember me
+                    </label>
+                </div>
+                <button id="authSubmit" class="primary-btn">Login</button>
+                <p id="authToggle">Don't have an account? <a href="#">Register</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction History Modal -->
+    <div class="modal" id="transactionModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Transaction History</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Coin</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsTableBody">
+                        <!-- Filled by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Analysis Modal -->
+    <div class="modal" id="aiAnalysisModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>AI Market Analysis</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="ai-analysis-content">
+                    <div class="analysis-section">
+                        <h4><i class="fas fa-brain"></i> Market Sentiment Analysis</h4>
+                        <div class="sentiment-breakdown">
+                            <div class="sentiment-chart">
+                                <canvas id="sentimentChart" width="300" height="200"></canvas>
+                            </div>
+                            <div class="sentiment-details">
+                                <div class="sentiment-score-large">
+                                    <span class="score positive">78%</span>
+                                    <span class="label">Bullish Sentiment</span>
+                                </div>
+                                <div class="sentiment-factors">
+                                    <div class="factor">
+                                        <span class="factor-name">Institutional Interest</span>
+                                        <div class="factor-bar">
+                                            <div class="bar-fill positive" style="width: 85%"></div>
+                                        </div>
+                                        <span class="factor-value">85%</span>
+                                    </div>
+                                    <div class="factor">
+                                        <span class="factor-name">Technical Indicators</span>
+                                        <div class="factor-bar">
+                                            <div class="bar-fill positive" style="width: 72%"></div>
+                                        </div>
+                                        <span class="factor-value">72%</span>
+                                    </div>
+                                    <div class="factor">
+                                        <span class="factor-name">Social Media</span>
+                                        <div class="factor-bar">
+                                            <div class="bar-fill neutral" style="width: 68%"></div>
+                                        </div>
+                                        <span class="factor-value">68%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h4><i class="fas fa-chart-line"></i> Price Predictions</h4>
+                        <div class="predictions-grid">
+                            <div class="prediction-card">
+                                <h5>Bitcoin (BTC)</h5>
+                                <div class="prediction-range">
+                                    <span class="current">Current: $45,234</span>
+                                    <div class="range-bar">
+                                        <div class="range-fill" style="width: 73%"></div>
+                                        <div class="range-marker" style="left: 73%"></div>
+                                    </div>
+                                    <div class="range-labels">
+                                        <span>$42K</span>
+                                        <span>$52K</span>
+                                    </div>
+                                </div>
+                                <div class="prediction-confidence">
+                                    <span>30-day target: $52,000</span>
+                                    <span class="confidence">Confidence: 87%</span>
+                                </div>
+                            </div>
+                            <div class="prediction-card">
+                                <h5>Ethereum (ETH)</h5>
+                                <div class="prediction-range">
+                                    <span class="current">Current: $3,187</span>
+                                    <div class="range-bar">
+                                        <div class="range-fill" style="width: 68%"></div>
+                                        <div class="range-marker" style="left: 68%"></div>
+                                    </div>
+                                    <div class="range-labels">
+                                        <span>$2.8K</span>
+                                        <span>$3.8K</span>
+                                    </div>
+                                </div>
+                                <div class="prediction-confidence">
+                                    <span>30-day target: $3,800</span>
+                                    <span class="confidence">Confidence: 82%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h4><i class="fas fa-lightbulb"></i> AI Recommendations</h4>
+                        <div class="recommendations-list">
+                            <div class="recommendation high-priority">
+                                <div class="rec-icon">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <div class="rec-content">
+                                    <h5>High Priority: Portfolio Rebalancing</h5>
+                                    <p>Your Bitcoin allocation (65%) is above optimal range. Consider reducing to 45-50% and increasing Ethereum exposure.</p>
+                                    <div class="rec-actions">
+                                        <button class="rec-btn">Apply Suggestion</button>
+                                        <button class="rec-btn secondary">Learn More</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recommendation medium-priority">
+                                <div class="rec-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div class="rec-content">
+                                    <h5>Medium Priority: Diversification</h5>
+                                    <p>Consider adding exposure to DeFi tokens (UNI, AAVE) for better risk-adjusted returns.</p>
+                                    <div class="rec-actions">
+                                        <button class="rec-btn">View Options</button>
+                                        <button class="rec-btn secondary">Ignore</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Risk Analysis Modal -->
+    <div class="modal" id="riskAnalysisModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Advanced Risk Analysis</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="risk-dashboard">
+                    <div class="risk-overview">
+                        <div class="risk-score-card">
+                            <div class="risk-score medium-risk">
+                                <span class="score-number">6.2</span>
+                                <span class="score-label">Risk Score</span>
+                            </div>
+                            <div class="risk-scale">
+                                <div class="scale-bar">
+                                    <div class="scale-fill" style="width: 62%"></div>
+                                </div>
+                                <div class="scale-labels">
+                                    <span>Low</span>
+                                    <span>Medium</span>
+                                    <span>High</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="risk-metrics-detailed">
+                        <div class="metric-card">
+                            <h4>Value at Risk (VaR)</h4>
+                            <div class="metric-value negative">-$2,847</div>
+                            <p>Maximum expected loss (95% confidence) over 1 day</p>
+                            <canvas id="varChart" height="100"></canvas>
+                        </div>
+
+                        <div class="metric-card">
+                            <h4>Portfolio Beta</h4>
+                            <div class="metric-value">0.87</div>
+                            <p>Volatility relative to market (BTC)</p>
+                            <div class="beta-comparison">
+                                <div class="beta-bar">
+                                    <div class="beta-fill" style="width: 87%"></div>
+                                </div>
+                                <span>Less volatile than market</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <h4>Sharpe Ratio</h4>
+                            <div class="metric-value positive">1.42</div>
+                            <p>Risk-adjusted return efficiency</p>
+                            <div class="sharpe-rating excellent">Excellent</div>
+                        </div>
+                    </div>
+
+                    <div class="risk-scenarios">
+                        <h4>Stress Test Scenarios</h4>
+                        <div class="scenarios-grid">
+                            <div class="scenario-card">
+                                <h5>Market Crash (-50%)</h5>
+                                <div class="scenario-impact negative">-$18,456</div>
+                                <div class="scenario-probability">Probability: 2%</div>
+                            </div>
+                            <div class="scenario-card">
+                                <h5>Bear Market (-30%)</h5>
+                                <div class="scenario-impact negative">-$11,073</div>
+                                <div class="scenario-probability">Probability: 8%</div>
+                            </div>
+                            <div class="scenario-card">
+                                <h5>Correction (-20%)</h5>
+                                <div class="scenario-impact negative">-$7,382</div>
+                                <div class="scenario-probability">Probability: 15%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Trading Modal -->
+    <div class="modal" id="demoTradingModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>🎯 Advanced Demo Trading Terminal</h3>
+                <div class="demo-reset">
+                    <button id="resetDemoBtn" class="action-btn">
+                        <i class="fas fa-undo"></i> Reset Demo
+                    </button>
+                </div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="demo-trading-interface">
+                    <div class="demo-stats-bar">
+                        <div class="demo-stat">
+                            <span>Demo Balance</span>
+                            <strong id="modalDemoBalance">$100,000.00</strong>
+                        </div>
+                        <div class="demo-stat">
+                            <span>Available Margin</span>
+                            <strong id="demoMargin">$75,000.00</strong>
+                        </div>
+                        <div class="demo-stat">
+                            <span>Open Positions</span>
+                            <strong id="openPositionsCount">2</strong>
+                        </div>
+                        <div class="demo-stat">
+                            <span>Total P&L</span>
+                            <strong id="totalDemoPnL" class="positive">+$2,347.82</strong>
+                        </div>
+                    </div>
+
+                    <div class="demo-trading-grid">
+                        <div class="demo-chart-section">
+                            <div class="demo-pair-selector">
+                                <select id="demoPairSelect">
+                                    <option value="BTCUSDT">BTC/USDT - $45,234.67</option>
+                                    <option value="ETHUSDT">ETH/USDT - $3,187.45</option>
+                                    <option value="ADAUSDT">ADA/USDT - $0.4567</option>
+                                    <option value="SOLUSDT">SOL/USDT - $89.23</option>
+                                    <option value="DOTUSDT">DOT/USDT - $6.78</option>
+                                </select>
+                                <div class="demo-price-action">
+                                    <span class="demo-current-price" id="demoCurrentPrice">$45,234.67</span>
+                                    <span class="demo-price-change positive" id="demoPriceChange">+2.34%</span>
+                                </div>
+                            </div>
+                            <div class="demo-chart-container">
+                                <canvas id="demoTradingChart" style="width: 100%; height: 300px;"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="demo-trading-panel">
+                            <div class="demo-order-types">
+                                <button class="demo-order-type active" data-type="market">Market</button>
+                                <button class="demo-order-type" data-type="limit">Limit</button>
+                                <button class="demo-order-type" data-type="stop">Stop Loss</button>
+                            </div>
+
+                            <div class="demo-trade-form">
+                                <div class="demo-form-group">
+                                    <label>Order Size (USDT)</label>
+                                    <input type="number" id="demoOrderSize" value="1000" min="10" max="50000">
+                                </div>
+                                <div class="demo-form-group">
+                                    <label>Leverage</label>
+                                    <select id="demoLeverage">
+                                        <option value="1">1x (Spot)</option>
+                                        <option value="2">2x</option>
+                                        <option value="5">5x</option>
+                                        <option value="10" selected>10x</option>
+                                        <option value="20">20x</option>
+                                        <option value="50">50x</option>
+                                        <option value="100">100x</option>
+                                    </select>
+                                </div>
+                                <div class="demo-form-group" id="limitPriceGroup" style="display: none;">
+                                    <label>Limit Price</label>
+                                    <input type="number" id="demoLimitPrice" step="0.01">
+                                </div>
+
+                                <div class="demo-position-size">
+                                    <span>Position Size: <strong id="positionSize">0.0221 BTC</strong></span>
+                                    <span>Margin Required: <strong id="marginRequired">$100.00</strong></span>
+                                </div>
+
+                                <div class="demo-trade-buttons">
+                                    <button class="demo-trade-btn long" onclick="executeDemoTrade('long')">
+                                        <i class="fas fa-arrow-up"></i> LONG
+                                        <small>Buy / Go Long</small>
+                                    </button>
+                                    <button class="demo-trade-btn short" onclick="executeDemoTrade('short')">
+                                        <i class="fas fa-arrow-down"></i> SHORT
+                                        <small>Sell / Go Short</small>
+                                    </button>
+                                </div>
+
+                                <div class="demo-quick-amounts">
+                                    <button class="demo-amount-btn" data-amount="100">$100</button>
+                                    <button class="demo-amount-btn" data-amount="500">$500</button>
+                                    <button class="demo-amount-btn" data-amount="1000">$1K</button>
+                                    <button class="demo-amount-btn" data-amount="5000">$5K</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-positions-section">
+                        <h4>Open Positions</h4>
+                        <div class="demo-positions-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Pair</th>
+                                        <th>Side</th>
+                                        <th>Size</th>
+                                        <th>Entry Price</th>
+                                        <th>Current Price</th>
+                                        <th>P&L</th>
+                                        <th>ROE</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="demoPositionsTable">
+                                    <tr>
+                                        <td>BTC/USDT</td>
+                                        <td><span class="position-side long">LONG</span></td>
+                                        <td>0.0443 BTC</td>
+                                        <td>$44,856.23</td>
+                                        <td>$45,234.67</td>
+                                        <td class="positive">+$16.77</td>
+                                        <td class="positive">+0.84%</td>
+                                        <td>
+                                            <button class="demo-close-btn" onclick="closeDemoPosition(0)">Close</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>ETH/USDT</td>
+                                        <td><span class="position-side short">SHORT</span></td>
+                                        <td>0.628 ETH</td>
+                                        <td>$3,201.45</td>
+                                        <td>$3,187.45</td>
+                                        <td class="positive">+$8.79</td>
+                                        <td class="positive">+0.44%</td>
+                                        <td>
+                                            <button class="demo-close-btn" onclick="closeDemoPosition(1)">Close</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add to Watchlist Modal -->
+    <div class="modal" id="addToWatchlistModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add to Watchlist</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Search Cryptocurrency</label>
+                    <input type="text" id="watchlistCoinSearch" placeholder="Search for a coin...">
+                </div>
+                <div class="coin-search-results" id="watchlistSearchResults">
+                    <!-- Filled by JS -->
+                </div>
+                <button id="addToWatchlistConfirm" class="primary-btn" disabled>Add to Watchlist</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Market Signals Modal -->
+    <div class="modal" id="signalsModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>🔴 Advanced Market Signals</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="signals-dashboard">
+                    <div class="signals-filters">
+                        <select id="signalsTimeframe">
+                            <option value="1m">1 Minute</option>
+                            <option value="5m">5 Minutes</option>
+                            <option value="15m">15 Minutes</option>
+                            <option value="1h" selected>1 Hour</option>
+                            <option value="4h">4 Hours</option>
+                            <option value="1d">1 Day</option>
+                        </select>
+                        <select id="signalsStrength">
+                            <option value="all">All Signals</option>
+                            <option value="strong">Strong Only</option>
+                            <option value="medium">Medium+</option>
+                        </select>
+                    </div>
+
+                    <div class="signals-grid" id="allSignals">
+                        <div class="signal-card bullish">
+                            <div class="signal-header">
+                                <span class="signal-pair">BTC/USDT</span>
+                                <span class="signal-strength strong">STRONG</span>
+                            </div>
+                            <div class="signal-details">
+                                <h4>Golden Cross Formation</h4>
+                                <p>50 MA crossed above 200 MA indicating strong bullish momentum</p>
+                                <div class="signal-metrics">
+                                    <span>Confidence: <strong>92%</strong></span>
+                                    <span>Target: <strong>$48,500</strong></span>
+                                    <span>Stop Loss: <strong>$44,200</strong></span>
+                                </div>
+                                <button class="execute-signal-btn" onclick="executeSignal('BTC', 'long')">
+                                    Execute Long
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="signal-card bearish">
+                            <div class="signal-header">
+                                <span class="signal-pair">ETH/USDT</span>
+                                <span class="signal-strength medium">MEDIUM</span>
+                            </div>
+                            <div class="signal-details">
+                                <h4>RSI Overbought</h4>
+                                <p>RSI above 70 with divergence, potential correction incoming</p>
+                                <div class="signal-metrics">
+                                    <span>Confidence: <strong>78%</strong></span>
+                                    <span>Target: <strong>$3,050</strong></span>
+                                    <span>Stop Loss: <strong>$3,250</strong></span>
+                                </div>
+                                <button class="execute-signal-btn" onclick="executeSignal('ETH', 'short')">
+                                    Execute Short
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="signal-card bullish">
+                            <div class="signal-header">
+                                <span class="signal-pair">SOL/USDT</span>
+                                <span class="signal-strength strong">STRONG</span>
+                            </div>
+                            <div class="signal-details">
+                                <h4>Volume Breakout</h4>
+                                <p>Price breaking resistance with 300% volume increase</p>
+                                <div class="signal-metrics">
+                                    <span>Confidence: <strong>85%</strong></span>
+                                    <span>Target: <strong>$95.00</strong></span>
+                                    <span>Stop Loss: <strong>$86.50</strong></span>
+                                </div>
+                                <button class="execute-signal-btn" onclick="executeSignal('SOL', 'long')">
+                                    Execute Long
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Screener Modal -->
+    <div class="modal" id="screenerModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Advanced Crypto Screener</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="screener-interface">
+                    <div class="screener-filters">
+                        <div class="filter-section">
+                            <h4>Market Data</h4>
+                            <div class="filter-row">
+                                <div class="filter-group">
+                                    <label>Market Cap</label>
+                                    <div class="range-inputs">
+                                        <input type="number" placeholder="Min" id="marketCapMin">
+                                        <input type="number" placeholder="Max" id="marketCapMax">
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Price</label>
+                                    <div class="range-inputs">
+                                        <input type="number" placeholder="Min" id="priceMin">
+                                        <input type="number" placeholder="Max" id="priceMax">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h4>Technical Indicators</h4>
+                            <div class="filter-row">
+                                <div class="filter-group">
+                                    <label>RSI (14)</label>
+                                    <div class="range-inputs">
+                                        <input type="number" placeholder="30" id="rsiMin">
+                                        <input type="number" placeholder="70" id="rsiMax">
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Price vs MA(50)</label>
+                                    <select id="maFilter">
+                                        <option value="">Any</option>
+                                        <option value="above">Above MA</option>
+                                        <option value="below">Below MA</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h4>Performance</h4>
+                            <div class="filter-row">
+                                <div class="filter-group">
+                                    <label>24h Change (%)</label>
+                                    <div class="range-inputs">
+                                        <input type="number" placeholder="-100" id="change24hMin">
+                                        <input type="number" placeholder="100" id="change24hMax">
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <label>7d Change (%)</label>
+                                    <div class="range-inputs">
+                                        <input type="number" placeholder="-100" id="change7dMin">
+                                        <input type="number" placeholder="100" id="change7dMax">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-actions">
+                            <button id="applyScreener" class="primary-btn">
+                                <i class="fas fa-search"></i> Apply Filters
+                            </button>
+                            <button id="resetScreener" class="primary-btn secondary">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                            <button id="saveScreener" class="primary-btn secondary">
+                                <i class="fas fa-save"></i> Save Screen
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="screener-results">
+                        <div class="results-header">
+                            <h4>Results <span id="resultsCount">(0 coins)</span></h4>
+                            <div class="results-actions">
+                                <button class="export-btn">
+                                    <i class="fas fa-download"></i> Export
+                                </button>
+                            </div>
+                        </div>
+                        <div class="results-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Coin</th>
+                                        <th>Price</th>
+                                        <th>24h %</th>
+                                        <th>7d %</th>
+                                        <th>Market Cap</th>
+                                        <th>RSI</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="screenerResults">
+                                    <!-- Filled by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upgrade Modal -->
+    <div class="modal" id="upgradeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Upgrade to CryptoVision Pro</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="planSelection" class="pricing-plans">
+                    <div class="plan-card">
+                        <h3>Monthly</h3>
+                        <div class="plan-price">$14.99<span>/month</span></div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Advanced Charting Tools</li>
+                            <li><i class="fas fa-check"></i> Portfolio Analytics</li>
+                            <li><i class="fas fa-check"></i> Real-time Alerts</li>
+                            <li><i class="fas fa-check"></i> Advanced Screener</li>
+                            <li><i class="fas fa-check"></i> Tax Reporting</li>
+                        </ul>
+                        <button class="primary-btn" data-plan="monthly" data-price="14.99">Choose Monthly</button>
+                    </div>
+                    <div class="plan-card recommended">
+                        <div class="recommended-badge">BEST VALUE</div>
+                        <h3>Yearly</h3>
+                        <div class="plan-price">$9.99<span>/month</span></div>
+                        <small>Billed annually at $119.88 (Save 33%)</small>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Everything in Monthly</li>
+                            <li><i class="fas fa-check"></i> Save 33%</li>
+                            <li><i class="fas fa-check"></i> Exclusive Features</li>
+                            <li><i class="fas fa-check"></i> Early Access</li>
+                            <li><i class="fas fa-check"></i> API Access</li>
+                        </ul>
+                        <button class="primary-btn" data-plan="yearly" data-price="119.88">Choose Yearly</button>
+                    </div>
+                </div>
+
+                <div id="paymentForm" style="display: none;">
+                    <div class="payment-header">
+                        <button id="backToPlanBtn" class="back-btn">
+                            <i class="fas fa-arrow-left"></i> Back to Plans
+                        </button>
+                        <div class="selected-plan-info">
+                            <h4 id="selectedPlanTitle">Monthly Plan</h4>
+                            <div id="selectedPlanPrice">$14.99/month</div>
+                        </div>
+                    </div>
+
+                    <form id="payment-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="card-element">Card Information</label>
+                            <div id="card-element" class="stripe-element">
+                                <!-- Stripe Elements will create form elements here -->
+                            </div>
+                            <div id="card-errors" role="alert" class="error-message"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" required>
+                                I agree to the Terms of Service and Privacy Policy
+                            </label>
+                        </div>
+
+                        <button type="submit" id="submit-payment" class="primary-btn payment-btn">
+                            <span id="button-text">Subscribe Now</span>
+                            <div id="spinner" class="loading-spinner" style="display: none;"></div>
+                        </button>
+
+                        <div class="payment-security">
+                            <i class="fas fa-lock"></i>
+                            <span>Secured by Stripe • SSL Encrypted</span>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="paymentSuccess" style="display: none;">
+                    <div class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Welcome to CryptoVision Pro!</h3>
+                        <p>Your subscription has been activated successfully. You now have access to all premium features.</p>
+                        <button class="primary-btn" onclick="location.reload()">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Loading data...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="script.js"></script>
+    <script src="enhanced-app.js"></script>
+</body>
+</html>

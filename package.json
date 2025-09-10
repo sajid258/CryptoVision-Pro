@@ -1,0 +1,30 @@
+{
+  "name": "cryptovision-pro",
+  "version": "1.0.0",
+  "description": "Advanced cryptocurrency dashboard with Stripe payments",
+  "main": "payment-server.js",
+  "scripts": {
+    "start": "node payment-server.js",
+    "dev": "nodemon payment-server.js"
+  },
+  "dependencies": {
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "helmet": "^8.1.0",
+    "node-cache": "^5.1.2",
+    "stripe": "^14.25.0",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "dashboard",
+    "stripe",
+    "payments"
+  ],
+  "author": "CryptoVision Pro",
+  "license": "MIT"
+}
